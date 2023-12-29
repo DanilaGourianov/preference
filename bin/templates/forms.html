@@ -1,0 +1,599 @@
+{{define "forms"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Survey</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+        <link href="https://getbootstrap.com/docs/5.2/examples/sign-in/signin.css" rel="stylesheet">
+        <link href="list-groups.css" rel="stylesheet">
+        <script>
+          function checkForm() {
+            var selectList = document.getElementById("myForm").getElementsByTagName("select");
+            var hasError = false;
+            
+            for (var i = 0; i < selectList.length; i++) {
+              if (selectList[i].value == "") {
+                selectList[i].classList.add("error");
+                hasError = true;
+              }
+              else {
+                selectList[i].classList.remove("error");
+              }
+            }
+            
+            if (hasError) {
+              alert("Пожалуйста, заполните все поля.");
+              return false;
+            }
+            
+            return true;
+          }
+        </script>
+        <style>
+          .error {
+            border: 1px solid red;
+          }
+        </style>
+</head>
+<body class="d-flex h-100 text-center ">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top ">
+      </nav>
+    </header>
+    <div class="mx-auto text-center">
+      <br><h1>Выберите одну в каждой паре:</h1>
+      <hr style="border: none; border-top: 3px solid #000; height: 3px;">
+      <br><br>
+          <form action="/save" method="post" id="myForm" onsubmit="return checkForm()">
+                <h3>1-я пара</h3><br>
+                <div class="row">
+                  {{template "1"}}
+                  {{template "2"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example"  name="pair1">
+                  <option value="Тайная Вечеря 1">Тайная Вечеря</option>
+                  <option value="Сотворение Адама 1">Сотворение Адама</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>2-я пара</h3><br>
+                <div class="row">
+                  {{template "3"}}
+                  {{template "4"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair2">
+                  <option value="Ночной Дозор 1">Ночной Дозор</option>
+                  <option value="Охотники На Снегу 1">Охотники На Снегу</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>3-я пара</h3><br>
+                <div class="row">
+                  {{template "5"}}
+                  {{template "6"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair3">
+                  <option value="Большая Волна В Канагаве 1">Большая Волна В Канагаве</option>
+                  <option value="Звёздная Ночь 1">Звёздная Ночь</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>4-я пара</h3><br>
+                <div class="row">
+                  {{template "7"}}
+                  {{template "8"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair4">
+                  <option value="Крик 1">Крик</option>
+                  <option value="Постоянство Памяти 1">Постоянство Памяти</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>5-я пара</h3><br>
+                <div class="row">
+                  {{template "9"}}
+                  {{template "10"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair5">
+                  <option value="Натюрморт С Чайником 1">Натюрморт С Чайником</option>
+                  <option value="Бульвар Монмартр Ночью 1">Бульвар Монмартр Ночью</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>6-я пара</h3><br>
+                <div class="row">
+                  {{template "1"}}
+                  {{template "3"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair6">
+                  <option value="Тайная Вечеря 2">Тайная Вечеря</option>
+                  <option value="Ночной Дозор 2">Ночной Дозор</option>
+                </select> 
+                <br>
+                <br>
+                <br>
+                <h3>7-я пара</h3><br>
+                <div class="row">
+                  {{template "2"}}
+                  {{template "4"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair7">
+                  <option value="Сотворение Адама 2">Сотворение Адама</option>
+                  <option value="Охотники На Снегу 2">Охотники На Снегу</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>8-я пара</h3><br>
+                <div class="row">
+                  {{template "3"}}
+                  {{template "7"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair8">
+                  <option value="Ночной Дозор 3">Ночной Дозор</option>
+                  <option value="Крик 2">Крик</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>9-я пара</h3><br>
+                <div class="row">
+                  {{template "5"}}
+                  {{template "8"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair9">
+                  <option value="Большая Волна В Канагаве 2">Большая Волна В Канагаве</option>
+                  <option value="Постоянство Памяти 2">Постоянство Памяти</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>10-я пара</h3><br>
+                <div class="row">
+                  {{template "6"}}
+                  {{template "10"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair10">
+                  <option value="Звёздная Ночь 2">Звёздная Ночь</option>
+                  <option value="Бульвар Монмартр Ночью 2">Бульвар Монмартр Ночью</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>11-я пара</h3><br>
+                <div class="row">
+                  {{template "1"}}
+                  {{template "9"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair11">
+                  <option value="Тайная Вечеря 3">Тайная Вечеря</option>
+                  <option value="Натюрморт С Чайником 2">Натюрморт С Чайником</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>12-я пара</h3><br>
+                <div class="row">
+                  {{template "2"}}
+                  {{template "6"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair12">
+                  <option value="Сотворение Адама 3">Сотворение Адама</option>
+                  <option value="Звёздная Ночь 3">Звёздная Ночь</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>13-я пара</h3><br>
+                <div class="row">
+                  {{template "4"}}
+                  {{template "5"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair13">
+                  <option value="Охотники На Снегу 3">Охотники На Снегу</option>
+                  <option value="Большая Волна В Канагаве 3">Большая Волна В Канагаве</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>14-я пара</h3><br>
+                <div class="row">
+                  {{template "7"}}
+                  {{template "9"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair14">
+                  <option value="Крик 3">Крик</option>
+                  <option value="Натюрморт С Чайником 3">Натюрморт С Чайником</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>15-я пара</h3><br>
+                <div class="row">
+                  {{template "8"}}
+                  {{template "10"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair15">
+                  <option value="Постоянство Памяти 3">Постоянство Памяти</option>
+                  <option value="Бульвар Монмартр Ночью 3">Бульвар Монмартр Ночью</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>16-я пара</h3><br>
+                <div class="row">
+                  {{template "1"}}
+                  {{template "8"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair16">
+                  <option value="Тайная Вечеря 4">Тайная Вечеря</option>
+                  <option value="Постоянство Памяти 4">Постоянство Памяти</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>17-я пара</h3><br>
+                <div class="row">
+                  {{template "2"}}
+                  {{template "3"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair17">
+                  <option value="Сотворение Адама 4">Сотворение Адама</option>
+                  <option value="Ночной Дозор 4">Ночной Дозор</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>18-я пара</h3><br>
+                <div class="row">
+                  {{template "4"}}
+                  {{template "10"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair18">
+                  <option value="Охотники На Снегу 4">Охотники На Снегу</option>
+                  <option value="Бульвар Монмартр Ночью 4">Бульвар Монмартр Ночью</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>19-я пара</h3><br>
+                <div class="row">
+                  {{template "5"}}
+                  {{template "9"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair19">
+                  <option value="Большая Волна В Канагаве 4">Большая Волна В Канагаве</option>
+                  <option value="Натюрморт С Чайником 4">Натюрморт С Чайником</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>20-я пара</h3><br>
+                <div class="row">
+                  {{template "6"}}
+                  {{template "7"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair20">
+                  <option value="Звёздная Ночь 4">Звёздная Ночь</option>
+                  <option value="Крик 4">Крик</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>21-я пара</h3><br>
+                <div class="row">
+                  {{template "8"}}
+                  {{template "9"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair21">
+                  <option value="Постоянство Памяти 5">Постоянство Памяти</option>
+                  <option value="Натюрморт С Чайником 5">Натюрморт С Чайником</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>22-я пара</h3><br>
+                <div class="row">
+                  {{template "1"}}
+                  {{template "10"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair22">
+                  <option value="Тайная Вечеря 5">Тайная Вечеря</option>
+                  <option value="Бульвар Монмартр Ночью 5">Бульвар Монмартр Ночью</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>23-я пара</h3><br>
+                <div class="row">
+                  {{template "2"}}
+                  {{template "7"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair23">
+                  <option value="Сотворение Адама 5">Сотворение Адама</option>
+                  <option value="Крик 5">Крик</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>24-я пара</h3><br>
+                <div class="row">
+                  {{template "3"}}
+                  {{template "5"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair24">
+                  <option value="Ночной Дозор 5">Ночной Дозор</option>
+                  <option value="Большая Волна В Канагаве 5">Большая Волна В Канагаве</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>25-я пара</h3><br>
+                <div class="row">
+                  {{template "4"}}
+                  {{template "6"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair25">
+                  <option value="Охотники На Снегу 5">Охотники На Снегу</option>
+                  <option value="Звёздная Ночь 5">Звёздная Ночь</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>26-я пара</h3><br>
+                <div class="row">
+                  {{template "7"}}
+                  {{template "10"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair26">
+                  <option value="Крик 6">Крик</option>
+                  <option value="Бульвар Монмартр Ночью 6">Бульвар Монмартр Ночью</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>27-я пара</h3><br>
+                <div class="row">
+                  {{template "1"}}
+                  {{template "4"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair27">
+                  <option value="Тайная Вечеря 6">Тайная Вечеря</option>
+                  <option value="Охотники На Снегу 6">Охотники На Снегу</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>28-я пара</h3><br>
+                <div class="row">
+                  {{template "2"}}
+                  {{template "5"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair28">
+                  <option value="Сотворение Адама 6">Сотворение Адама</option>
+                  <option value="Большая Волна В Канагаве 6">Большая Волна В Канагаве</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>29-я пара</h3><br>
+                <div class="row">
+                  {{template "3"}}
+                  {{template "8"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair29">
+                  <option value="Ночной Дозор 6">Ночной Дозор</option>
+                  <option value="Постоянство Памяти 6">Постоянство Памяти</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>30-я пара</h3><br>
+                <div class="row">
+                  {{template "6"}}
+                  {{template "9"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair30">
+                  <option value="Звёздная Ночь 6">Звёздная Ночь</option>
+                  <option value="Натюрморт С Чайником 6">Натюрморт С Чайником</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>31-я пара</h3><br>
+                <div class="row">
+                  {{template "1"}}
+                  {{template "5"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair31">
+                  <option value="Тайная Вечеря 7">Тайная Вечеря</option>
+                  <option value="Большая Волна В Канагаве 7">Большая Волна В Канагаве</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>32-я пара</h3><br>
+                <div class="row">
+                  {{template "6"}}
+                  {{template "8"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair32">
+                  <option value="Звёздная Ночь 7">Звёздная Ночь</option>
+                  <option value="Постоянство Памяти 7">Постоянство Памяти</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>33-я пара</h3><br>
+                <div class="row">
+                  {{template "2"}}
+                  {{template "10"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair33">
+                  <option value="Сотворение Адама 7">Сотворение Адама</option>
+                  <option value="Бульвар Монмартр Ночью 7">Бульвар Монмартр Ночью</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>34-я пара</h3><br>
+                <div class="row">
+                  {{template "3"}}
+                  {{template "9"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair34">
+                  <option value="Ночной Дозор 7">Ночной Дозор</option>
+                  <option value="Натюрморт С Чайником 7">Натюрморт С Чайником</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>35-я пара</h3><br>
+                <div class="row">
+                  {{template "5"}}
+                  {{template "7"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair35">
+                  <option value="Большая Волна В Канагаве 8">Большая Волна В Канагаве</option>
+                  <option value="Крик 7">Крик</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>36-я пара</h3><br>
+                <div class="row">
+                  {{template "1"}}
+                  {{template "6"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair36">
+                  <option value="Тайная Вечеря 8">Тайная Вечеря</option>
+                  <option value="Звёздная Ночь 8">Звёздная Ночь</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>37-я пара</h3><br>
+                <div class="row">
+                  {{template "2"}}
+                  {{template "8"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair37">
+                  <option value="Сотворение Адама 8">Сотворение Адама</option>
+                  <option value="Постоянство Памяти 8">Постоянство Памяти</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>38-я пара</h3><br>
+                <div class="row">
+                  {{template "3"}}
+                  {{template "10"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair38">
+                  <option value="Ночной Дозор 8">Ночной Дозор</option>
+                  <option value="Бульвар Монмартр Ночью 8">Бульвар Монмартр Ночью</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>39-я пара</h3><br>
+                <div class="row">
+                  {{template "4"}}
+                  {{template "7"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair39">
+                  <option value="Охотники На Снегу 7">Охотники На Снегу</option>
+                  <option value="Крик 8">Крик</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>40-я пара</h3><br>
+                <div class="row">
+                  {{template "4"}}
+                  {{template "8"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair40">
+                  <option value="Охотники На Снегу 8">Охотники На Снегу</option>
+                  <option value="Постоянство Памяти 9">Постоянство Памяти</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>41-я пара</h3><br>
+                <div class="row">
+                  {{template "1"}}
+                  {{template "7"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair41">
+                  <option value="Тайная Вечеря 9">Тайная Вечеря</option>
+                  <option value="Крик 9">Крик</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>42-я пара</h3><br>
+                <div class="row">
+                  {{template "4"}}
+                  {{template "9"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair42">
+                  <option value="Охотники На Снегу 9">Охотники На Снегу</option>
+                  <option value="Звёздная Ночь 9">Звёздная Ночь</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>43-я пара</h3><br>
+                <div class="row">
+                  {{template "2"}}
+                  {{template "9"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair43">
+                  <option value="Сотворение Адама 9">Сотворение Адама</option>
+                  <option value="Натюрморт С Чайником 8">Натюрморт С Чайником</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>44-я пара</h3><br>
+                <div class="row">
+                  {{template "5"}}
+                  {{template "10"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair44">
+                  <option value="Большая Волна В Канагаве 9">Большая Волна В Канагаве</option>
+                  <option value="Бульвар Монмартр Ночью 9">Бульвар Монмартр Ночью</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <h3>45-я пара</h3><br>
+                <div class="row">
+                  {{template "3"}}
+                  {{template "6"}}
+                </div>
+                <select class="form-select" size="2" aria-label="size 2 select example" name="pair45">
+                  <option value="Ночной Дозор 9">Ночной Дозор</option>
+                  <option value="Звёздная Ночь 9">Звёздная Ночь</option>
+                </select>
+              <br>
+              <br>
+              <br>
+              <button class="btn btn-primary" type="submit">Сохранить</button>
+              <br><br>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+{{end}}
